@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import goalRoutes from './routes/goalRoutes.js';
+import goalRoutes from './routes/blogRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import commentRoutes from './routes/commentRoutes.js';
 import { errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 
@@ -19,8 +20,9 @@ app.get('/', (req, res) => {
   res.send('homepage');
 });
 
-app.use('/api/goals', goalRoutes);
+app.use('/api/blogs', goalRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/comments', commentRoutes);
 
 app.use(errorHandler);
 const PORT = process.env.PORT || 5000;

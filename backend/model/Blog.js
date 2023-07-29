@@ -1,22 +1,24 @@
 import mongoose from 'mongoose';
 
-const goalSchema = new mongoose.Schema(
+const blogSchema = new mongoose.Schema(
   {
-    user: {
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'users',
     },
 
-    text: {
+    title: {
       type: String,
       required: [true, 'Please add a text value'],
     },
+    body: String,
+    imageUrl: String,
   },
   {
     timestamps: true,
   }
 );
 
-const Goal = mongoose.model('Goal', goalSchema);
-export default Goal;
+const Blog = mongoose.model('Blog', blogSchema);
+export default Blog;
